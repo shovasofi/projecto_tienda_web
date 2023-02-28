@@ -1,19 +1,19 @@
 
 // Expresión regular solo números
-/** fuente: http://estilow3b.com/ejemplos-comunes-de-expresiones-regulares-javascript/ */
+// getElements
 
 //validacion
-function validaNum(checkNumero) {
-    const EXP_REG_NUMEROS = /^[0-9]+$/;
-    var checkNumero = document.getElementById("stock").value;// Números recibidos del formulario
+function validaNum() {
+    const EXP_REG_NUMEROS = /^[1-9]\d*$/;
+    var numeroStock = document.getElementById("stock").value;// Números recibidos del formulario
+
 
     // Evaluamos números 
-    if (checkNumero.match(EXP_REG_NUMEROS) != null) {
-        console.log("Numero válido.")
+    if (numeroStock.match(EXP_REG_NUMEROS) != null) {
+        alert("Numero válido.")
         return true;
     } else {
-
-        console.log("Numero inválido. Por favor, introduzca de nuevo.");
+        alert("Numero inválido. Por favor, introduzca de nuevo.");
         return false;
     }
 
@@ -21,40 +21,8 @@ function validaNum(checkNumero) {
 
 
 //aqui vamos buacr en el json y ofrecerá las opciones de seleccion
-function call_ajax() {
-    let promesa1 = new Promise(function (resolve, reject) {
-        let xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "productos.json", true);
-        xhttp.send();
-
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                if (this.status == 200) {
-                    //buscar dentro del archivo json productos 
-                    var jsonResponse = xhttp.responseText;
-                    //pasarlo a objeto
-                    var objeto_json = JSON.parse(jsonResponse);
-                    //acceder a las propiedades
-                    objeto_json.codigo_producto
-                    resolve(objeto_json);
-                } else {
-                    reject();
-                }
-            }
-
-        }
-
-    });
-    return promesa1;
-};
 
 
-//promise all
-Promise.all(call_ajax())
-    .then(e => console.log("todo ok "))
-    .catch(e => console.log("error"));
-
-console.log("hola")
 
 //----------------------------------
 
@@ -91,27 +59,43 @@ function getSugerencias(textoBuscado) {
                     //pasarlo a objeto
                     var objeto_json = JSON.parse(jsonResponse);
                     //acceder a las propiedades
-                    var sugerencias = objeto_json.descripcion;
 
 
-                    const sugerenciasFiltradas = sugerencias.filter(sugerencia =>
-                        sugerencia.toLowerCase().startsWith(textoBuscado.toLowerCase()));
-                    resolve(sugerenciasFiltradas);
-                } else {
-                    reject();
-                }
+                    var sugerencias = objeto_json;
+                   // console.log(objeto_json);
+                    var sugerenciasFiltradas = sugerencias.filter((sugerencia) => 
+
+                       sugerencia.descripcion.toLowerCase().startsWith(textoBuscado)
+        
+                     );
+                     
+                     if (sugerencias.filter(e=> e.stock > 0)) {
+
+                       // sugerencias.filter(e => e.precio)
+                     resolve(sugerenciasFiltradas.filter(e=> e.stock > 0).map( e=> ` producto: ${e.descripcion}  precio:   ${ e.precio }`))
+
+
+                    }
+                    
+
+                    resolve(sugerenciasFiltradas.filter((e=> e.stock > 0).map( e=> e.descripcion)))
+
+                    }
+                
             }
-
         }
 
-        
-    });
+    }
+       
+    );
 
 }
 
+/*
 Promise.all(getSugerencias())
     .then(e => console.log("todo ok "))
     .catch(e => console.log("error"));
+    */
 
 function mostrarSugerencias(sugerencias) {
     listaSugerencias.innerHTML = '';
@@ -119,6 +103,7 @@ function mostrarSugerencias(sugerencias) {
         const li = document.createElement('li');
         li.textContent = sugerencia;
         listaSugerencias.appendChild(li);
+
     });
 }
 
@@ -129,3 +114,4 @@ function gestionarError(error) {
 function limpiarSugerencias() {
     listaSugerencias.innerHTML = '';
 }
+
