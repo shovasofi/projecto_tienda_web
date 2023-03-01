@@ -10,22 +10,28 @@
 </head>
 
 <body>
-    <h1>Compra en la tienda Nisupu</h1>
-    <form action="tienda.html">
-        <label for="codProd">Código de producto:</label><br>
-        <input type="text" id="codProd" name="codProd"><br>
-        <label for="descripcion">Descripción:</label><br>
-        <input type="text" id="descripcion" name="descripcion"><br>
+    <div id="consulta_formulario">
+        <h1>Compra en la tienda Nisupu</h1>
+        <form action="tienda.html">
+            <label for="codProd">Código de producto:</label><br>
+            <input type="text" id="codProd" name="codProd"><br>
+            <label for="descripcion">Descripción:</label><br>
+            <input type="text" id="descripcion" name="descripcion"><br>
+    
+            <label for="stock">Escoja cantidad:</label><br>
+            <input type="text" id="stock" name="stock"><br>
 
-        <label for="stock">Escoja cantidad:</label><br>
-        <input type="text" id="stock" name="stock"><br>
-        <label for="precio">Precio:</label><br>
-        <input type="text" id="precio" name="precio">
+            <br>
+           
+        </form>
+    
+        <ul id="sugerencias"></ul>
+    </div>
 
-        <button type="submit" id="submit" onclick="validaNum()">Añadir</button>
-    </form>
-
-    <ul id="sugerencias"></ul>
+    <div id="carrito">
+        <ul id="carrito_lista"></ul>
+        <button type="submit" id="submit_calcular_compra" onclick="calculaCarrito()">Pagar</button>
+    </div>
 
     <script src="tienda.js"></script>
 
