@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B) Tienda</title>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <h1>Compra en la tienda Nisupu</h1>
-    <form>
+    <form action="tienda.html">
         <label for="codProd">Código de producto:</label><br>
         <input type="text" id="codProd" name="codProd"><br>
         <label for="descripcion">Descripción:</label><br>
@@ -22,10 +22,18 @@
         <label for="precio">Precio:</label><br>
         <input type="text" id="precio" name="precio">
 
-        <button type="submit" id="submit" onclick="validaNum()">Enviar</button>
+        <button type="submit" id="submit" onclick="validaNum()">Añadir</button>
     </form>
 
     <ul id="sugerencias"></ul>
+
     <script src="tienda.js"></script>
+
+    <footer>
+        <div>
+            <a href="https://iesclaradelrey.es/portal/index.php/es/">IES Clara del Rey</a>
+        </div>
+    </footer>
 </body>
+
 </html>

@@ -31,7 +31,7 @@
     {
         "codigo_producto": 5,
         "descripcion": "lápiz",
-        "precio": 20,
+        "precio": 5,
         "stock":30
 
     },
@@ -39,7 +39,7 @@
     {
         "codigo_producto": 6,
         "descripcion": "libro",
-        "precio": 20,
+        "precio": 2,
         "stock":30
 
     },

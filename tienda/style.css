@@ -1,0 +1,17 @@
+a:hover{
+    text-align: center;
+    color: black;
+}
+div{
+    background-color: red;
+    width: 100%;
+}
+
+form{
+    margin: 30px;
+}
+footer{
+
+    position: fixed;
+    bottom: 0;
+}

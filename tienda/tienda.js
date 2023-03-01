@@ -3,17 +3,17 @@
 // getElements
 
 //validacion
-function validaNum() {
+function validaNum(numeroStock) {
     const EXP_REG_NUMEROS = /^[1-9]\d*$/;
-    var numeroStock = document.getElementById("stock").value;// Números recibidos del formulario
+   // var numeroStock = document.getElementById("stock").value;// Números recibidos del formulario
 
 
     // Evaluamos números 
     if (numeroStock.match(EXP_REG_NUMEROS) != null) {
-        alert("Numero válido.")
+        //alert("Numero válido.")
         return true;
     } else {
-        alert("Numero inválido. Por favor, introduzca de nuevo.");
+       // alert("Numero inválido. Por favor, introduzca de nuevo.");
         return false;
     }
 
@@ -28,18 +28,18 @@ function validaNum() {
 
 const buscarInput = document.querySelector('#descripcion');
 const listaSugerencias = document.querySelector('#sugerencias');
+const cantidad = document.getElementById("stock");
+const btn = document.getElementById("submit");
 
 buscarInput.addEventListener('input', descripcion);
 
 function descripcion() {
-    const textoBuscado = buscarInput.value;
+    var textoBuscado = buscarInput.value;
     if (textoBuscado.trim().length > 0) {
         getSugerencias(textoBuscado)
             .then(mostrarSugerencias)
             .catch(gestionarError);
-    } else {
-        limpiarSugerencias();
-    }
+    } 
 }
 
 function getSugerencias(textoBuscado) {
@@ -62,23 +62,26 @@ function getSugerencias(textoBuscado) {
 
 
                     var sugerencias = objeto_json;
+                    console.log(cantidad);
                    // console.log(objeto_json);
                     var sugerenciasFiltradas = sugerencias.filter((sugerencia) => 
 
-                       sugerencia.descripcion.toLowerCase().startsWith(textoBuscado)
+                       sugerencia.descripcion.toLowerCase().startsWith(textoBuscado.toLowerCase())
         
                      );
                      
                      if (sugerencias.filter(e=> e.stock > 0)) {
-
+                      //  validaNum(cantidad);
                        // sugerencias.filter(e => e.precio)
-                     resolve(sugerenciasFiltradas.filter(e=> e.stock > 0).map( e=> ` producto: ${e.descripcion}  precio:   ${ e.precio }`))
-
+                      //var prcioCantidad = sugerencias.filter(e => e.precio * cantidad )
+                     resolve(sugerenciasFiltradas.filter(e=> e.stock > 0)
+                     .map( e=> ` producto: ${e.descripcion} precio: ${ e.precio}€   precio total por ${cantidad.value}: ${ e.precio * cantidad.value}€  `))
+                        
 
                     }
-                    
+                   
 
-                    resolve(sugerenciasFiltradas.filter((e=> e.stock > 0).map( e=> e.descripcion)))
+                   // resolve(sugerenciasFiltradas.filter((e=> e.stock > 0).map( e=> e.descripcion)))
 
                     }
                 
@@ -91,6 +94,34 @@ function getSugerencias(textoBuscado) {
 
 }
 
+
+btn.addEventListener("submit", descripcion);
+
+function carritoCompra(){
+   
+    let texto = document.getElementById("texto").value;
+    let div = document.createElement("div");
+    let text = document.createTextNode(texto);
+    let eliminar_bt = document.createElement("button");
+    div.className = "task";
+    eliminar_bt.className = "delete";
+    eliminar_bt.textContent = "eliminar ";
+
+    div.appendChild(text);
+
+    block.append(div);
+    div.appendChild(eliminar_bt);
+   
+}
+
+var img;
+function  mostrarImg(){
+
+     img = document.createElement("img");
+    img.src = "índice.jpeg";
+    window.document.body.appendChild(img);
+
+}
 /*
 Promise.all(getSugerencias())
     .then(e => console.log("todo ok "))
@@ -101,8 +132,11 @@ function mostrarSugerencias(sugerencias) {
     listaSugerencias.innerHTML = '';
     sugerencias.forEach(sugerencia => {
         const li = document.createElement('li');
+        li.className ="producto";
         li.textContent = sugerencia;
         listaSugerencias.appendChild(li);
+        li.addEventListener("mouseover", mostrarImg );
+        li.addEventListener("mouseout", limpiarSugerencias);
 
     });
 }
@@ -112,6 +146,11 @@ function gestionarError(error) {
 }
 
 function limpiarSugerencias() {
-    listaSugerencias.innerHTML = '';
+    img.src = '';
 }
+
+
+
+
+
 
