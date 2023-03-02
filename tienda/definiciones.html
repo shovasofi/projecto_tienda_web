@@ -11,38 +11,30 @@
 </head>
 
 <body>
-    <form action="">
-        <label for="codProd">Código de producto:</label><br>
-        <input type="text" id="codProd" name="codProd"><br>
-        <label for="descripcion">Descripción:</label><br>
-        <input type="text" id="descripcion" name="descripcion"><br>
-
-        <label for="stock">Escoja cantidad:</label><br>
-        <input type="text" id="stock" name="stock"><br>
-        <label for="precio">Precio:</label><br>
-        <input type="text" id="precio" name="precio">
-
-        <input type="button" id="btn" value="Añadir">
-    </form>
+ 
 
 
     <div>
         <table id="tabla">
             <tr>
                 <td>Codigo </td>
-                <td>descripcion</td>      
-                <td>cantidad </td>
-                <td> precio </td>
+                <td>Descripcion</td>      
+                <td>Stock </td>
+                <td> Precio </td>
             </tr>
-            <tr id="productos "> 
-                <td id="c"></td>
-                <td id="d"></td>
-                <td id="cantidad"></td>
-                <td id="pre"></td>
-            </tr>
+           
             
 
         </table>
+
+        <p>añadir archivo</p>
+        <input type="text " name="" id="inputcodigo">codigo <br>
+        <input type="text " name="" id="inputnombre">Descripción <br>
+        <input type="text " name="" id="inputStock">Stock <br>
+        <input type="text " name="" id="inputPrecio">Precio <br>
+        <button onclick="añadirProducto()">añadrid</button>
+        
+
     </div>
 </body>
 

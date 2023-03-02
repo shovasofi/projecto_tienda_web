@@ -3,6 +3,18 @@
 // getElements
 
 //validacion
+
+window.onload= function(){
+
+    let stringp=localStorage.getItem('guardado');
+    productos = JSON.parse(stringp);
+
+
+
+
+}
+
+
 function validaNum(numeroStock) {
     const EXP_REG_NUMEROS = /^[1-9]\d*$/;
     // var numeroStock = document.getElementById("stock").value;// Números recibidos del formulario
@@ -57,7 +69,7 @@ function getSugerencias(textoBuscado) {
                     //buscar dentro del archivo json productos 
                     var jsonResponse = xhttp.responseText;
                     //pasarlo a objeto
-                    var objeto_json = JSON.parse(jsonResponse);
+                    var objeto_json = productos;
                     //acceder a las propiedades
 
 
@@ -94,8 +106,7 @@ function getSugerencias(textoBuscado) {
 
 }
 
-
-btn.addEventListener("submit", descripcion);
+//btn.addEventListener("submit", descripcion);
 
 function carritoCompra() {
 
@@ -199,3 +210,18 @@ function calculaCarrito() {
 
 
 
+// REDIRIGE A DESCRIPCIÓN DE PRODUCTOS CON EL ATAJO
+document.addEventListener("keydown", function (event) {
+
+    if (event.ctrlKey && event.key === " ") {
+        window.open("definiciones.html")
+        event.preventDefault();
+    }
+
+});
+
+function calcular_carrito(){
+    var calculoTotal = lista_carrito.reduce((a, b) => a + (Number(b[1]) * Number(b[2])), 0);
+
+    document.getElementById("cantidad_total").textContent = parseFloat(calculoTotal.toFixed(2));
+}
