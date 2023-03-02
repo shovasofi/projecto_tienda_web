@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="definiciones.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form action="">
+        <label for="codProd">Código de producto:</label><br>
+        <input type="text" id="codProd" name="codProd"><br>
+        <label for="descripcion">Descripción:</label><br>
+        <input type="text" id="descripcion" name="descripcion"><br>
+
+        <label for="stock">Escoja cantidad:</label><br>
+        <input type="text" id="stock" name="stock"><br>
+        <label for="precio">Precio:</label><br>
+        <input type="text" id="precio" name="precio">
+
+        <input type="button" id="btn" value="Añadir">
+    </form>
+
+
+    <div>
+        <table id="tabla">
+            <tr>
+                <td>Codigo </td>
+                <td>descripcion</td>      
+                <td>cantidad </td>
+                <td> precio </td>
+            </tr>
+            <tr id="productos "> 
+                <td id="c"></td>
+                <td id="d"></td>
+                <td id="cantidad"></td>
+                <td id="pre"></td>
+            </tr>
+            
+
+        </table>
+    </div>
+</body>
+
+</html>

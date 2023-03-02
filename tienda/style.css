@@ -17,3 +17,11 @@ footer{
     position: fixed;
     bottom: 0;
 }
+
+table tr {
+    border: 2px solid black;
+    margin: 15px;
+}
+td{
+    border: 2px solid red;
+}
