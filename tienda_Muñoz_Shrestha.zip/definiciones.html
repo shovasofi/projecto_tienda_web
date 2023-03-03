@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A) Definiciones</title>
+    <script src="definiciones.js"></script>
+    <script src="listado.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <a href="tienda.html">Ir a ver Tienda</a>
+    </div>
+    <div>
+        <p>Productos de la tienda (nuestra interfaz es tipo consola porque es vintage...):</p>
+        <ul id="divlistado"></ul>
+    </div>
+    <div>
+        <p>Añadir producto</p>
+        <form>
+            <label for="inputcodigo">Codigos:</label>
+            <input type="text" name="codigo" id="inputcodigo">
+            <br>
+            <label for="inputnombre">Descripción: </label>
+            <input type="text" name="descripcion" id="inputnombre">
+            <br>
+            <label for="inputnombre">Cantidad/Stock: </label>
+            <input type="text" name="stock" id="inputcantidad">
+            <br>
+            <label for="inputprecio">Precio: </label>
+            <input type="text" name="precio" id="inputprecio">
+            <br>
+            <button id="botonañadir">AÑADIR</button>
+        </form>
+    </div>
+
+
+    <div>
+        <p>Eliminar producto</p>
+        <form>
+            <label for="inputnombre">Código: </label>
+            <input type="inputcodigoelim" name="codigoelim" id="inputcodigoelim">
+            <button id="botoneliminar">eliminar</button>
+        </form>
+    </div>
+    <footer>
+        <div>
+            <a href="https://iesclaradelrey.es/portal/index.php/es/">IES Clara del Rey</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

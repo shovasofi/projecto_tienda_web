@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B) Tienda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <a href="definiciones.html">Ir a ver Definiciones</a>
+        <p>Atajo rápido para ver Definiciones: pulsa <code>Ctrl</code> + <code>espacio</code></p>
+    </div>
+    <div id="consulta_formulario">
+        <h1>Compra en la tienda Nisupu</h1>
+        <form action="tienda.html">
+            <label for="codProd">Código de producto:</label><br>
+            <input type="text" id="codProd" name="codProd"><br>
+            <label for="descripcion">Descripción:</label><br>
+            <input type="text" id="descripcion" name="descripcion"><br>
+            <label for="stock">Escoja cantidad/stock:</label><br>
+            <input type="text" id="stock" name="stock"><br>
+            <br>
+        </form>
+        <!-- Mostramos sugerencias -->
+        <ul id="sugerencias"></ul>
+    </div>
+
+    <div id="carrito">
+        <table id="carrito_lista"></table>
+        <button type="submit" id="submit_calcular_compra" onclick="calculaCarrito()">Pagar</button>
+    </div>
+
+    <script src="tienda.js"></script>
+    <script src="listado.js"></script>
+
+    <footer>
+        <div>
+            <a href="https://iesclaradelrey.es/portal/index.php/es/">IES Clara del Rey</a>
+        </div>
+    </footer>
+</body>
+
+</html>
